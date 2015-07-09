@@ -1,0 +1,117 @@
+<?php
+use yii\helpers\VarDumper;
+use yii\helpers\Html;
+use components\LuLu;
+use common\includes\DataSource;
+use components\helpers\TTimeHelper;
+use components\widgets\LoopData;
+use data\AttachmentAsset;
+use common\includes\UrlUtility;
+use common\includes\CommonUtility;
+
+/**
+ * @var yii\web\View $this
+ */
+
+
+$this->registerJsFile(CommonUtility::getThemeUrl('js/js.js'),['yii\web\JqueryAsset']);
+$this->registerJsFile(CommonUtility::getThemeUrl('js_2/jquery-1.7.2.min.js'),['yii\web\JqueryAsset']);
+$this->registerJsFile(CommonUtility::getThemeUrl('js_2/index.js'),['yii\web\JqueryAsset']);
+$this->registerJsFile(CommonUtility::getThemeUrl('js_2/common.js'),['yii\web\JqueryAsset']);
+$this->registerCssFile(CommonUtility::getThemeUrl('css_3/content.css'));
+?>
+
+<div class="pub_c">
+   <div class="m_banner">
+    <div class="banner b1" style="background-image:url(<?php echo CommonUtility::getThemeUrl()?>/images_2/banner_2.jpg);" id="banner1">
+      <div class="main_c pr"> <a href="#"  title="lalalal" class="start_btn"></a> </div>
+    </div>
+    <div class="banner b5" style=" background-image:url(<?php echo CommonUtility::getThemeUrl()?>/images_2/banner_17.jpg);display:none;" id="banner5">
+        <div class="main_c"> <a href="#" target="_blank" title="" class="l1"></a>
+        <div class="countdown">
+                <span class="num_1 fsm">0</span>
+            <span class="num_2 fsm">0</span>
+        </div>
+
+         </div>
+    </div>
+    <div class="banner b2" style=" background-image:url(<?php echo CommonUtility::getThemeUrl()?>/images_2/banner_12.jpg);display:none;" id="banner2">
+
+</div>
+    <div class="banner b3" style=" background-image:url(<?php echo CommonUtility::getThemeUrl()?>/images_2/banner_3.jpg);display:none;" id="banner3"> </div>
+    <div class="banner b4" style=" background-image:url(<?php echo CommonUtility::getThemeUrl()?>/iimages_2/banner_4.jpg);display:none;" id="banner4">
+      <div class="main_c pr"> <a href="#" title="" class="start_btn">查看详情</a> </div>
+    </div>
+    <div class="banner_ctrl"> <a href="#" class="prev" title=""></a> <a href="javascript:;" class="next" title=""></a> </div>
+  </div>
+
+ <div class="clear"></div>
+
+    <div class="container column">
+        <div class="columnLeft">
+            <div class="tbox border">
+                
+                <div class="middleTitle1">
+                    <h2>理财投资</h2>
+                </div>
+                <ul class="imgTxtContent2 size120x90">
+                        <?php
+				echo "aaaaaaaaaaaa";	 
+                        ?>
+                </ul>
+            </div>
+	</div>
+
+        <div class="columnMiddle">
+            <div class="tbox border">
+                
+                <div class="middleTitle1">
+                    <h2>便捷贷款</h2>
+                </div>
+                <ul class="imgTxtContent2 size120x90">
+                        <?php
+				echo "aaaaaaaaaaaa";	 
+                        ?>
+                </ul>
+            </div>
+	</div>
+
+        <div class="columnRight">
+            <div class="tbox border">
+                
+                <div class="middleTitle1">
+                    <h2>安全保障</h2>
+                </div>
+                <ul class="imgTxtContent2 size120x90">
+                        <?php
+				echo "aaaaaaaaaaaa";	 
+                        ?>
+                </ul>
+            </div>
+	</div>
+
+   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,604 @@
+<?php
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use components\widgets\Breadcrumbs;
+use frontend\assets\AppAsset;
+use components\widgets\Alert;
+use frontend\assets\ThemeAsset;
+use yii\helpers\Url;
+use common\includes\CommonUtility;
+
+/**
+ * @var \yii\web\View $this
+ * @var string $content
+ */
+
+ThemeAsset::register($this);
+
+?>
+<?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>">
+<head>
+	<meta charset="<?= Yii::$app->charset ?>"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title><?= Html::encode($this->title) ?></title>
+	<?php $this->head() ?>
+</head>
+<body>
+	<?php $this->beginBody() ?>
+	<div class="wrap">
+		<div class="container border" id="topbar">
+			<div class="floatRight">
+				<?php 
+					//echo Html::a('git地址','http://www.github.com/yiifans/lulucms',['target'=>'_blank']);
+					if (Yii::$app->user->isGuest) {
+						echo Html::a('快速注册',['/site/signup']);
+						echo Html::a('立即登录',['/site/login']);
+					} else {
+						echo Html::a('退出 (' . Yii::$app->user->identity->username .')',['/site/logout']);
+					}
+					echo Html::a('后台','@web/admin.php',['target'=>'_blank']);
+				?>
+			</div>		
+		</div>
+		<div class="clear"></div>
+		<div class="container navContainer" id="header">
+			<div class="nav">
+				<ul>
+					<li><a href="<?php echo Url::to(['page/detail','id'=>1])?>"><font color="">关于我们</font></a></li>
+					<li><a href="index.php?r=content/list&chnid='.$channel['id'].'"><font color="">新手指引</font></a></li>
+					<li><a href="index.php?r=content/list&chnid='.$channel['id'].'"><font color="">我要借款</font></a></li>
+					<li><a href="index.php?r=content/list&chnid='.$channel['id'].'"><font color="">我要理财</font></a></li>
+					<li class=""><a href="index.php">首页</a></li>
+					<li><a href="">属于你的理财-微睿</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- Channels -->
+		<!--
+		<div class="container navContainer">
+			<div class="nav">
+				<ul>
+					<li class="currclass"><a href="index.php">首页</a></li>
+					<?php 
+						foreach ($this->rootChannels as $channel)
+						{
+							if($channel['is_leaf'])
+							{
+								echo '<li><a href="index.php?r=content/list&chnid='.$channel['id'].'"><font color="red">'.$channel['name'].'</font></a></li>';
+							}
+							else
+							{
+								echo '<li><a href="index.php?r=content/channel&chnid='.$channel['id'].'">'.$channel['name'].'</a></li>';
+							}
+						}
+					?>
+					<li><a href="<?php echo Url::to(['page/detail','id'=>1])?>">关于</a></li>
+					<li><?php echo Html::a('Yii中文社区','http://www.yiifans.com',['target'=>'_blank']);?></li>
+					<li><?php echo Html::a('Yii 2.0 中文权威指南','http://www.yiifans.com/yii2/guide/',['target'=>'_blank']);?></li>
+				</ul>
+			</div>
+		</div>
+		-->
+		<div class="clear"></div>
+		<div class="container breadcrumbContainer">
+			<?= Breadcrumbs::widget([
+				'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+			]) ?>		
+		</div>
+		<div class="clear"></div>
+		<div class="container" id="containerbody">	
+			<?= $content ?>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<footer class="footer">
+<div class="ui-footer" id="footer">
+  <div class="container">
+    <div class="grid">
+    	<div class="ui-footer-section ui-footer-narrow-hide fn-clear">
+  <h4 class="color-gray-text text-big fn-left w85">友情链接</h4>
+  <ul class="ui-footer-links fn-left w850">
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://credit.hc360.com/dk_index/hc_dk.html">慧聪金融</a>
+    </li>
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://www.enfodesk.com/">易观智库</a>
+    </li>
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://www.haodai.com/">好贷网</a>
+    </li>
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://www.yinhang.com/">银率网</a>
+    </li>
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://bank.hexun.com/">和讯银行</a>
+    </li>
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://www.gome.com.cn/">国美在线</a>
+    </li>
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://www.cjdao.com/index.jsp">财经道</a>
+    </li>
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://www.siilu.com/">电商服务</a>
+    </li>
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://www.shopex.cn/">ShopEx</a>
+    </li>
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://bj.58.com/danbaobaoxiantouzi/">58投资担保</a>
+    </li>
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://www.wangdaizhijia.com/">网贷之家</a>
+    </li>
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://bbs.wacai.com">挖财社区</a>
+    </li>
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://www.feidee.com/money/">随手记</a>
+    </li>
+    <li class="fn-left">
+      <a class="gray" target="_blank" href="http://www.rong360.com/licai/">融360理财</a>
+    </li>
+  </ul>
+</div>
+
+      <div class="ui-footer-section ui-footer-narrow-hide fn-clear">
+        <div class="ui-footer-links grid_9 alpha">
+    			<ul class="fn-clear">
+            <li class="fn-left">
+              <a class="gray" target="_blank" href="/about/about.action?flag=intro">公司介绍</a>
+            </li>
+            <li class="fn-left">
+              <a class="gray" target="_blank" href="/guide/investSecurity.action">安全保障</a>
+            </li>
+            <li class="fn-left">
+              <a class="gray" target="_blank" href="/about/about.action?flag=report">媒体报道</a>
+            </li>
+            <li class="fn-left">
+              <a class="gray" target="_blank" href="/about/about.action?flag=responsibility">社会责任</a>
+            </li>
+            <li class="fn-left">
+              <a class="gray" target="_blank" href="/about/about.action?flag=invite">招贤纳士</a>
+            </li>
+            <li class="fn-left">
+              <a class="gray" target="_blank" href="/sitemap.action">网站地图</a>
+            </li>
+            <li class="fn-left">
+              <a class="gray" target="_blank" href="/help/index.action">帮助中心</a>
+            </li>
+            <li class="fn-left">
+              <a class="gray" target="_blank" href="/about/about.action?flag=contact">联系我们</a>
+            </li>
+          </ul>
+          <ul class="fn-clear icons">
+            <li class="fn-left">
+              <h4 class="color-gray-text text-big">客户服务</h4>
+            </li>
+            <li class="fn-left"><a class="ui-footer-img-link weibo" target="_blank" href="http://e.weibo.com/renrendai?ref=http%3A%2F%2Fwww.renrendai.com%2F">人人贷新浪微博</a></li>
+            <li class="fn-left"><a class="ui-footer-img-link qq-weibo" target="_blank" href="http://t.qq.com/renrendai">人人贷腾讯微博</a></li>
+            <li class="fn-left"><a class="ui-footer-img-link we-chat" tabindex="-1" href="#">人人贷微信</a></li>
+            <script type="text/javascript">
+                function online_service() {
+                    
+                    window.open('http://chat.looyuoms.com/chat/chat/p.do?c=20000293&f=10042100&g=10048378&site=5372&r=%23params%3A姓名%2C游客', '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');
+                    
+                }
+            </script>
+            <li class="fn-left"><a class="ui-footer-img-link online-customer-service cursor-pointer" target="_blank" onclick="online_service();">人人贷在线客服</a></li>
+          </ul>
+        </div>
+    		<div class="grid_3 omega">
+          <p class="color-gray-text text-right">客服电话</p>
+          <h4 class="color-gray-text text-right ui-footer-phone-number">400-090-6600</h4>
+          <p class="color-gray-text text-right">9:00 - 21:00</p>
+        </div>
+    	</div>
+      <div class="ui-footer-section last">
+      	<div class="ui-footer-copyright">
+          <span class="ui-footer-contact-link color-gray-text">© 2014 人人贷 All rights reserved</span>
+          <span class="ui-footer-contact-link color-gray-text has-separator">人人贷商务顾问(北京)有限公司</span>
+          <span class="ui-footer-contact-link color-gray-text has-separator"><a class="gray" target="_blank" href="/icp/icp.html">京ICP证 100953号</a></span>
+          <span class="ui-footer-contact-link color-gray-text has-separator">京公网安备11010502020657</span>
+          <span class="ui-footer-contact-link color-gray-text has-separator last">京ICP备12025643号-1</span>
+      	</div>
+        <div class="ui-footer-verification ui-footer-narrow-hide fn-clear">
+          <a class="ui-footer-verification-item fn-left credibility" title="人人贷荣获中国电子商务协会“诚信网站”认证殊荣" href="https://search.szfw.org/cert/l/CX20140315003612003651" target="_blank"></a>
+          <a class="ui-footer-verification-item fn-left trust" title="人人贷已通过中网权威数据库对比，获得“可信网站”身份验证，您可放心使用。" href="https://ss.knet.cn/verifyseal.dll?sn=e13042311010040288j4wq000000&ct=df&a=1&pa=931969" target="_blank"></a>
+          <a class="ui-footer-verification-item fn-left itrust" title="人人贷已经成为中国互联网信用评价中心网络诚信联盟成员，并且完成企业信用评级 " href="http://www.itrust.org.cn/yz/pjwx.asp?wm=2554879344" target="_blank"></a>
+          <a class="ui-footer-verification-item fn-left norton" title="人人贷已引入VeriSign SSL加密技术，您的隐私及个人资料安全已受最高级别的保护。" href="https://trustsealinfo.verisign.com/splash?form_file=fdf/splash.fdf&dn=www.renrendai.com&lang=zh_cn" target="_blank"></a>
+          <a class="ui-footer-verification-item fn-left police" title="人人贷已经完成在公安机关的信息备案，您可了解网站相关备案信息。" href="http://gawa.bjchy.gov.cn/websearch/" target="_blank"></a>
+          <!-- <a class="ui-footer-verification-item fn-left gongshang" title="人人贷已经完成在北京市工商局网站备案，您可了解网站相关备案信息。" href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202013052900002" target="_blank"></a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="fn-hide">
+  <div id="weixin-content" class="p20 text-center">
+    <img src="/static/img/weixin_l.jpg" />
+    <p>微信“发现”扫一扫，人人贷里动态全知道！</p>
+  </div>
+</div>
+<script>
+seajs.use(['components/components'], function(Components) {
+  new Components.Footer().init();
+});
+</script>
+    <div id="pg-server-message" data-status="" data-message="" style="display: none;"></div>
+  </div>
+  
+<script id="dialog-message" type="text/x-handlebars-template">
+<div class="ui-message-content">
+  <div class="fn-clear">
+    <div class="ui-message-icon fn-left">
+      {{# if info }}
+      <i class="iconfont fn-left info" title="提示">&#xF046;</i>
+      {{/ if }}
+      {{# if success }}
+      <i class="iconfont fn-left success" title="成功">&#xF049;</i>
+      {{/ if }}
+      {{# if warning }}
+      <i class="iconfont fn-left warning" title="警告">&#xF047;</i>
+      {{/ if }}
+      {{# if error }}
+      <i class="iconfont fn-left error" title="错误">&#xF045;</i>
+      {{/ if }}
+    </div>
+    <div class="ui-message-text fn-left">
+      {{# if title }}
+      <h3>{{ title }}</h3>
+      {{/ if }}
+      <p class="text-big">{{{ message }}}</p>
+      {{# if link }}
+      <p><a href="{{ link }}">{{ linkText }}</a></p>
+      {{/ if }}
+    </div>
+  </div>
+  <div class="ui-message-operation text-center mt20">
+    <a class="ui-button ui-button-blue ui-button-mid ui-message-close-button" {{# if button }}href="{{ button.link }}"{{/ if }}>{{# if button }}{{ button.text }}{{ else }}关闭{{/ if }}</a>
+  </div>
+</div>
+</script>
+  <script>seajs.use(['page']);</script>
+  
+  
+<script id="uplan-list-a-template" type="text/x-handlebars-template">
+ <table class="ui-table ui-table-blue ui-table-center">
+        <thead>
+          <tr>
+            <th style="font-size:14px;" width="20%"><span class="text-left pl20">计划名称</span></th>
+            <th style="font-size:14px;" width="18%"><span class="text-right pr25">计划金额（元）</span></th>
+            <th style="font-size:14px;" width="12%"><span>加入人次</span></th>
+            <th style="font-size:14px;" width="12%"><span>预期年化收益</span></th>
+            <th style="font-size:14px;" width="18%"><span class="text-right pr25">累计收益（元）</span></th>
+            <th style="font-size:14px;" width="20%"><span>状态</span></th>
+          </tr>
+        </thead>
+ <tbody>
+{{# each plans }}
+          <tr class="{{itemStyle}}">
+            <td class="text-left">
+              <div class="ui-td-bg pl20">
+                <a href="{{ link }}" target="_blank">{{ name }}</a>
+              </div>
+            </td>
+            <td class="text-right">
+              <div class="ui-td-bg pr25">
+               {{ amount }}
+              </div>
+            </td>
+            <td>
+              <div class="ui-td-bg">
+              {{ headCount }}人
+              </div>
+            </td>
+            <td>
+              <div class="ui-td-bg">
+                {{expectedYearRate}}
+              </div>
+            </td>
+            <td class="text-right">
+              <div class="ui-td-bg pr25">
+              {{ earnInterest }}
+              </div>
+            </td>
+            <td>
+               <div class="ui-td-bg">{{# if alink }}<a class="button  {{# if blink }}  button-disable {{ else }}  button-blue  {{/ if }} button-mid" style="display:inline-block;"    {{# if blink }}  {{ else }}  href="{{ link }}"  {{/ if }}>{{ statusinfo }}</a>{{ else }}{{ statusinfo }}{{/ if }}</div>
+            </td>
+          </tr>
+{{ else }}
+<tr>
+ <td colspan="6" class="color-gray-text "style="font-size:24px; padding-top:50px;">{{# if _message }}{{ _message }}{{ else }}U计划A没有数据{{/ if }}</td>
+</tr>
+{{/ each }}
+    </tbody>
+      </table>
+</script>
+<script id="uplan-list-b-template" type="text/x-handlebars-template">
+ <table class="ui-table ui-table-blue ui-table-center">
+        <thead>
+          <tr>
+            <th style="font-size:14px;" width="20%"><span class="text-left pl20">计划名称</span></th>
+            <th style="font-size:14px;" width="18%"><span class="text-right pr25">计划金额（元）</span></th>
+            <th style="font-size:14px;" width="12%"><span>加入人次</span></th>
+            <th style="font-size:14px;" width="12%"><span>预期年化收益</span></th>
+            <th style="font-size:14px;" width="18%"><span class="text-right pr25">累计收益（元）</span></th>
+            <th style="font-size:14px;" width="20%"><span>状态</span></th>
+          </tr>
+        </thead>
+ <tbody>
+{{# each plans }}
+          <tr class="{{itemStyle}}">
+            <td class="text-left">
+              <div class="ui-td-bg pl20">
+                <a href="{{ link }}" target="_blank">{{ name }}</a>
+              </div>
+            </td>
+            <td class="text-right">
+              <div class="ui-td-bg pr25">
+               {{ amount }}
+              </div>
+            </td>
+            <td>
+              <div class="ui-td-bg">
+              {{ headCount }}人
+              </div>
+            </td>
+            <td>
+              <div class="ui-td-bg">
+                 {{expectedYearRate}}
+              </div>
+            </td>
+            <td class="text-right">
+              <div class="ui-td-bg pr25">
+              {{ earnInterest }}
+              </div>
+            </td>
+            <td>
+               <div class="ui-td-bg">{{# if alink }}<a class="button  {{# if blink }}  button-disable {{ else }}  button-blue  {{/ if }} button-mid" style="display:inline-block;"    {{# if blink }}  {{ else }}  href="{{ link }}"  {{/ if }}>{{ statusinfo }}</a>{{ else }}{{ statusinfo }}{{/ if }}</div>
+            </td>
+          </tr>
+{{ else }}
+<tr>
+ <td colspan="6" class="color-gray-text "style="font-size:24px; padding-top:50px;" >{{# if _message }}{{ _message }}{{ else }}U计划B没有数据{{/ if }}</td>
+</tr>
+{{/ each }}
+    </tbody>
+      </table>
+</script>
+<script id="uplan-list-c-template" type="text/x-handlebars-template">
+ <table class="ui-table ui-table-blue ui-table-center" >
+        <thead>
+          <tr>
+            <th style="font-size:14px;" width="20%"><span class="text-left pl20">计划名称</span></th>
+            <th style="font-size:14px;" width="18%"><span class="text-right pr25">计划金额（元）</span></th>
+            <th style="font-size:14px;" width="12%"><span>加入人次</span></th>
+            <th style="font-size:14px;" width="12%"><span>预期年化收益</span></th>
+            <th style="font-size:14px;" width="18%"><span class="text-right pr25">累计收益（元）</span></th>
+            <th style="font-size:14px;" width="20%"><span>状态</span></th>
+          </tr>
+        </thead>
+ <tbody>
+{{# each plans }}
+          <tr class="{{itemStyle}}">
+            <td class="text-left">
+              <div class="ui-td-bg pl20">
+                <a href="{{ link }}" target="_blank">{{ name }}</a>
+              </div>
+            </td>
+            <td class="text-right">
+              <div class="ui-td-bg pr25">
+               {{ amount }}
+              </div>
+            </td>
+            <td>
+              <div class="ui-td-bg">
+              {{ headCount }}人
+              </div>
+            </td>
+            <td>
+              <div class="ui-td-bg">
+                {{expectedYearRate}}
+              </div>
+            </td>
+            <td class="text-right">
+              <div class="ui-td-bg pr25">
+              {{ earnInterest }}
+              </div>
+            </td>
+           <td>
+               <div class="ui-td-bg">{{# if alink }}<a class="button  {{# if blink }}  button-disable {{ else }}  button-blue  {{/ if }} button-mid" style="display:inline-block;"    {{# if blink }}  {{ else }}  href="{{ link }}"  {{/ if }}>{{ statusinfo }}</a>{{ else }}{{ statusinfo }}{{/ if }}</div>
+            </td>
+          </tr>
+{{ else }}
+<tr>
+ <td colspan="6" class="color-gray-text "style="font-size:24px; padding-top:50px;">{{# if _message }}{{ _message }}{{ else }}U计划C没有数据{{/ if }}</td>
+</tr>
+{{/ each }}
+    </tbody>
+      </table>
+</script>
+<script id="loan-list-template" type="text/x-handlebars-template">
+{{# if _hasHeader }}
+<li class="ui-list-header fn-clear" id="loan-list-header">
+  <span class="ui-list-title fn-left color-gray-text w260">借款标题</span>
+  <span class="ui-list-title fn-left color-gray-text text-center w80" title="借款人在人人贷的个人信用评级">信用等级</span>
+  <span class="ui-list-title fn-left color-gray-text text-center w120">年利率</span>
+  <span class="ui-list-title fn-left color-gray-text text-center w160">金额</span>
+  <span class="ui-list-title fn-left color-gray-text text-center w100">期限</span>
+  <span class="ui-list-title fn-left color-gray-text text-center w110">进度</span>
+  <span class="ui-list-title fn-left color-gray-text text-center w80"></span>
+</li>
+{{/ if }}
+{{# each loans }}
+<li class="ui-list-item fn-clear {{ itemLast }}">
+  <span class="ui-list-field fn-left text-big w260">
+    <em class="ui-loantype {{ loanType }}" title="{{ loanTypeText }}"></em><a class="fn-left w210 rrd-dimgray fn-text-overflow" href="{{ link }}" target="_blank" title="{{ title }}">{{ title }}</a>
+  </span>
+  <span class="ui-list-field fn-left w80"><a class="ui-creditlevel {{ creditLevel }} snow">{{ creditLevel }}</a></span>
+  <span class="ui-list-field fn-left num text-right w90 pr30"><em class="value">{{ interest }}</em>%</span>
+  <span class="ui-list-field fn-left num text-right w130 pr30"><em class="value">{{ amount }}</em>元</span>
+  <span class="ui-list-field fn-left num text-right w70 pr30"><em class="value">{{ term }}</em>个月</span>
+  <span class="ui-list-field fn-left w110">
+    <strong class="ui-progressbar-mid ui-progressbar-mid-{{ progress }}"><em>{{ progress }}</em>%</strong>
+  </span>
+  <span class="ui-list-field fn-left w80">
+    <a class="ui-button ui-button-mid ui-button-blue ui-list-invest-button ui-list-invest-button-{{ status }}" {{# if buttonLink }}href="{{ buttonLink }}" target="_blank"{{/ if }}>
+      <span class="OPEN">投标</span>
+      <span class="READY FIRST_READY">已满标</span>
+      <span class="IN_PROGRESS">还款中</span>
+    </a>
+  </span>
+  <!-- <div class="ui-poptip ui-poptip-white" style="display: none;" data-ui-name="ui-poptip">
+    <div class="ui-poptip-container">
+      <div class="ui-poptip-arrow ui-poptip-arrow-10"><em></em><span></span></div>
+      <div class="ui-poptip-content">{{ loanTypeText }}</div>
+    </div>
+  </div> -->
+</li>
+{{ else }}
+<li class="ui-list-status">
+  <p class="color-gray-text">{{# if _message }}{{ _message }}{{ else }}没有可投资项目{{/ if }}</p>
+</li>
+{{/ each }}
+{{# if _hasMore }}
+{{# if loans }}
+<li class="ui-list-more">
+  <a class="darkgray" href="/lend/loanList.action" target="_blank">查看更多投资理财项目</a>
+</li>
+{{/ if }}
+{{/ if }}
+</script>
+<script id="transfer-list-template" type="text/x-handlebars-template">
+{{# if _hasHeader }}
+<li class="ui-list-header fn-clear" id="transfer-list-header">
+  <span class="ui-list-title fn-left color-gray-text w240">借款标题</span>
+  <span class="ui-list-title fn-left color-gray-text w80">信用等级</span>
+  <span class="ui-list-title fn-left color-gray-text w80">年利率</span>
+  <span class="ui-list-title fn-left color-gray-text w80">剩余期限</span>
+  <span class="ui-list-title fn-left color-gray-text w80">每份价值</span>
+  <span class="ui-list-title fn-left color-gray-text w80">剩余份额</span>
+  <span class="ui-list-title fn-left color-gray-text w80">转让系数</span>
+  <span class="ui-list-title fn-left color-gray-text w100">转出价格</span>
+</li>
+{{/ if }}
+{{# each transferList }}
+<li class="ui-list-item fn-clear {{ itemLast }}">
+  <span class="ui-list-field fn-left text-big w240">
+    <em class="ui-loantype {{ loanType }}" title="{{ loanTypeText }}"></em><a class="fn-left w190 rrd-dimgray fn-text-overflow" href="{{ link }}" target="_blank" title={{ title }}>{{ title }}</a>
+  </span>
+  <span class="ui-list-field fn-left w80"><a class="ui-creditlevel {{ creditLevel }} snow">{{ creditLevel }}</a></span>
+  <span class="ui-list-field fn-left num text-right w70 pr10"><em>{{ interest }}</em>%</span>
+  <span class="ui-list-field fn-left num text-right w70 pr10"><em>{{ term }}</em>个月</span>
+  <span class="ui-list-field fn-left num text-right w75 pr5"><em>{{ cost }}</em>元</span>
+  <span class="ui-list-field fn-left num text-right w70 pr10"><em>{{ share }}</em>份</span>
+  <span class="ui-list-field fn-left num text-right w70 pr10"><em>{{ discount }}</em>%</span>
+  <span class="ui-list-field fn-left num text-right w90 pr10"><em>{{ price }}</em>元/份</span>
+  <span class="ui-list-field fn-left "><a class="ui-button ui-button-mid ui-button-blue" href="{{ link }}" target="_blank"><span>购买</span></a></span>
+  <!-- <div class="ui-poptip ui-poptip-white" style="display: none;" data-ui-name="ui-poptip">
+    <div class="ui-poptip-container">
+      <div class="ui-poptip-arrow ui-poptip-arrow-10"><em></em><span></span></div>
+      <div class="ui-poptip-content">{{ loanTypeText }}</div>
+    </div>
+  </div> -->
+</li>
+{{ else }}
+<li class="ui-list-status">
+  <p class="color-gray-text">{{# if _message }}{{ _message }}{{ else }}没有转让中的债权{{/ if }}</p>
+</li>
+{{/ each }}
+{{# if _hasMore }}
+<li class="ui-list-more">
+  <a class="darkgray" href="/">查看更多可转让债权</a>
+</li>
+{{/ if }}
+</script>
+  <script id="loan-list-rsp" type="text/x-json">{"status":0,"message":"okey","data":{"loans":[{"loanId":357556,"title":"资金周转","picture":"../images/loanType/grxf.png","amount":48900.0,"interest":11.5,"months":24,"loanType":"DEBX","status":"OPEN","allowAccess":false,"utmSource":"debx-as","openTime":"Dec 5, 2014 1:31:15 PM","startTime":"Dec 12, 2014 3:40:14 PM","surplusAmount":13050.0,"finishedRatio":73.31288343558282,"repaidByGuarantor":false,"borrowerId":1187355,"forbidComment":false,"nickName":"83793.as","borrowerLevel":"A","displayLoanType":"JGDB","currentIsRepaid":false,"amountPerShare":0.0,"oldLoan":false,"interestPerShare":0.0,"principal":0.0,"leftMonths":24,"overDued":false,"beginBidTime":"Dec 5, 2014 3:40:14 PM","productId":32},{"loanId":357538,"title":"购买货物/原材/设备","picture":"../images/loanType/tzcy.png","amount":114700.0,"interest":12.0,"months":24,"loanType":"DEBX","status":"OPEN","allowAccess":false,"utmSource":"debx-yx","openTime":"Dec 5, 2014 1:23:49 PM","startTime":"Dec 13, 2014 9:27:19 AM","surplusAmount":111550.0,"finishedRatio":2.746294681778553,"repaidByGuarantor":false,"borrowerId":1187323,"forbidComment":false,"nickName":"LianCF_1023387783.yx","borrowerLevel":"A","displayLoanType":"SDRZ","currentIsRepaid":false,"amountPerShare":0.0,"oldLoan":false,"interestPerShare":0.0,"principal":0.0,"leftMonths":24,"overDued":false,"beginBidTime":"Dec 6, 2014 9:27:19 AM","productId":26},{"loanId":354755,"title":"小型自主创业资金","picture":"","amount":20000.0,"interest":13.0,"months":36,"loanType":"DEBX","status":"FIRST_READY","allowAccess":false,"utmSource":"from-website","openTime":"Dec 3, 2014 1:25:28 PM","startTime":"Dec 12, 2014 4:50:25 PM","readyTime":"Dec 5, 2014 6:30:33 PM","surplusAmount":0.0,"finishedRatio":100.0,"repaidByGuarantor":false,"borrowerId":1155727,"forbidComment":false,"nickName":"宫森森","borrowerLevel":"HR","displayLoanType":"XYRZ","currentIsRepaid":false,"amountPerShare":0.0,"oldLoan":false,"interestPerShare":0.0,"principal":0.0,"leftMonths":36,"overDued":false,"beginBidTime":"Dec 5, 2014 4:50:25 PM","productId":7},{"loanId":357440,"title":"资金周转","picture":"../images/loanType/other.png","amount":79200.0,"interest":11.5,"months":24,"loanType":"DEBX","status":"FIRST_READY","allowAccess":false,"utmSource":"debx-as","openTime":"Dec 5, 2014 12:31:14 PM","startTime":"Dec 12, 2014 3:40:14 PM","readyTime":"Dec 6, 2014 1:19:17 AM","surplusAmount":0.0,"finishedRatio":100.0,"repaidByGuarantor":false,"borrowerId":1187123,"forbidComment":false,"nickName":"83851.as","borrowerLevel":"A","displayLoanType":"JGDB","currentIsRepaid":false,"amountPerShare":0.0,"oldLoan":false,"interestPerShare":0.0,"principal":0.0,"leftMonths":24,"overDued":false,"beginBidTime":"Dec 5, 2014 3:40:14 PM","productId":32}]}}</script>
+  <script>seajs.use(['pages/index']);</script>
+  <script>
+  	/*function callResult(){
+  		//flash显示完调用函数，位置只能在此页面中
+  		var flash = document.getElementById("flash");
+  		document.getElementById("pg-container").style.visibility="visible"
+  		var a = 100;
+  		var b = 0;
+  		var t = setInterval(function(){
+  			a -= 5;
+  			b += 5;
+  			setOpacity(flash,a);
+  			setOpacity("pg-container",b);
+  			if(a<=0) {
+  				clearInterval(t);
+  		  		flash.parentNode.removeChild(flash);
+  			}
+  		},50);
+
+  		function setOpacity(node,level){
+  			node =typeof node=="string" ? document.getElementById(node) : node;
+  			if(document.all){
+  				node.style.filter='alpha(opacity='+level+')';
+  			}else{
+  				node.style.opacity=level/100;
+  			}
+  		}
+  	}*/
+  </script>
+
+  
+  
+
+
+<textarea style="display:none" id="J_stat_js_1">
+
+
+var _agt=_agt||[];
+    _agt.push(['_atscu','AG_148085_IKDD']);
+    _agt.push(['_atsdomain','renrendai.com']);
+(function(){
+  var ag=document.createElement('script'); 
+      ag.type='text/javascript'; 
+      ag.async = true;
+      ag.src=(document.location.protocol=='https:'?'https':'http')+'://'+'t.agrantsem.com/js/ag.js';
+  var s=document.getElementsByTagName('script')[0]; 
+      s.parentNode.insertBefore(ag,s);
+})();
+
+</textarea>
+
+<script type='text/javascript'>
+window.onload = function () {
+  var _bdhmProtocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+  var bduidArr = ['71ce3105a964d0c3748e04584e5af0b9', '2547238860b5ae69d69cae60a725236c'];
+
+  for (i = 0; i < bduidArr.length; i++) {
+    var scriptbd = document.createElement("script");
+    scriptbd.type = "text/javascript";
+    scriptbd.async = true;
+    scriptbd.src = _bdhmProtocol + "hm.baidu.com/h.js?" + bduidArr[i];
+    document.body.appendChild(scriptbd);
+  }
+
+  for (i = 1; i <= 1; i++) {
+    var sid = 'J_stat_js_' + i.toString();
+    var element = document.getElementById(sid);
+    var scrObj = document.createElement("script");
+    scrObj.type = "text/javascript";
+    scrObj.async = true;
+    scrObj.text = element.innerHTML;
+    document.body.appendChild(scrObj);
+    element.parentNode.removeChild(element);
+  }
+};
+</script>
+
+	</footer>
+
+	<?php echo CommonUtility::getCachedConfigValue('site_stats');?>
+	<?php $this->endBody() ?>
+</body>
+</html>
+<?php $this->endPage() ?>

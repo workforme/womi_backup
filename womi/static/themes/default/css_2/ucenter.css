@@ -1,0 +1,46 @@
+
+.ucLeft {margin-left:170px;float:left;width:190px;margin-top:20px;}
+.ucRight {float:left;margin-left:20px;margin-top:20px;}
+
+.menu_list{margin:0px/* auto*/;width:125px;}
+
+.menu_head{width:163px;height:47px;line-height:47px;padding-left:38px;font-size:14px;color:#242424;cursor:pointer;border:1px solid #FFFFFF;position:relative;font-weight:bold;background:#DDDDDD url(../images_2/pro_left.png) center right no-repeat;margin:0;}
+
+.menu_list .current{background:#DDDDDD  url(../images_2/pro_down.png) center right no-repeat;}
+
+.menu_body{width:163px;height:auto;overflow:hidden;line-height:38px;border-left:1px solid #FFFFFF;backguound:#fff;border-right:1px solid #FFFFFF;}
+
+.menu_body a{display:block;width:163px;height:38px;line-height:30px;padding-left:38px;color:#777777;background:#DDDDFF;text-decoration:none;border-bottom:1px solid #FFFFFF;}
+
+.menu_body a:hover{text-decoration:none;}
+
+
+.site-login-right{padding-bottom:20px;padding-left:30px;padding-right:30px;padding-top:45px;float:left;width:300px;margin-left:80px;margin-top:50px;margin-bottom:30px;background:#DDDDFF;/*border:1px solid #c0c0c0;*/}
+
+/* 没有高度的backgd url 不显示的说*/
+.site-login-left{float:left;width:700px;;margin-left:90px;margin-top:50px;margin-bottom:60px;height:345px;background:#DDDDFF url(../images_2/login-left.jpg);display:block;/*border:1px solid #c0c0c0;*/}
+
+.sign{ width:600px;margin-right:5px;height:50px;}
+.sbtn{ width:240px;margin:5px auto;}
+.sign-outer{margin-right:25%;margin-top:10px;padding-top:50px;padding-bottom:80px;}
+.signl{float:right;padding-right:10px;padding-top:10px;font:14px "微软雅黑",Arial,Times;/*text-align:center;*/}
+.signr{float:right;width:240px;padding-top:0px;}
+.sign-hide{/*border:1px solid #eeeeee;*/margin:0px 5px;padding:5px 5px;float:right;width:200px;height:35px;font:13px "微软雅黑",Arial,Times;color:#FF0000;visibility: hidden;text-align:left;}
+.sign-bg{width:100%;margin:0px 0px 0px 0px;background:#ffffff url(../images_2/sign-bottom.jpg) no-repeat;display:block;border:0px solid #c0c0c0;}
+.login{ width:240px;margin-right:5px;height:70px;}
+
+/*add by kang start*/
+.loan{ width:600px;margin-right:5px;height:50px; }
+.loanl{float:right;padding-right:10px;padding-top:10px;font:14px "微软雅黑",Arial,Times;/*text-align:center;*/}
+.loanr{float:right;width:240px;padding-top:0px;}
+.loan-hide{/*border:1px solid #eeeeee;*/margin:0px 5px;padding:5px 5px;float:right;width:200px;height:35px;font:13px "微软雅黑",Arial,Times;color:#FF0000;visibility: hidden;text-align:left;}
+.loan-bg{width:100%;height:100%;margin:0px 0px 0px 0px;background:#ffffff url(../images_2/loan-bottom.jpg) no-repeat;display:block;border:0px solid #c0c0c0;}
+.loan-outer{margin-left:30%;margin-top:0px;padding-top:30px;padding-bottom:120px;}
+
+.invest{ width:600px;margin-right:5px;height:50px; }
+.investl{float:right;padding-right:10px;padding-top:10px;font:14px "微软雅黑",Arial,Times;/*text-align:center;*/}
+.investr{float:right;width:240px;padding-top:0px;}
+.invest-hide{/*border:1px solid #eeeeee;*/margin:0px 5px;padding:5px 5px;float:right;width:200px;height:35px;font:13px "微软雅黑",Arial,Times;color:#FF0000;visibility: hidden;text-align:left;}
+.invest-bg{width:100%;height:100%;margin:0px 0px 0px 0px;background:#ffffff url(../images_2/loan-bottom.jpg) no-repeat;display:block;border:0px solid #c0c0c0;}
+.invest-outer{margin-left:30%;margin-top:0px;padding-top:30px;padding-bottom:120px;}
+/*add by kang end*/

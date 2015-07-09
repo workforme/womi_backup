@@ -1,0 +1,28 @@
+<div class="ucLeft">
+ <div id="firstpane" class="menu_list">
+
+    <p class="menu_head ">我的账户</p>
+    <div style="display:none" class=menu_body >
+      <a href="#">基本信息</a>
+      <a href="#">安全信息</a>
+      <a href="#">认证资料</a>
+    </div>
+
+    <p class="menu_head">理财申请</p>
+    <div style="display:none" class=menu_body >
+      <a href="#">快速通道</a>
+    </div>
+
+    <p class="menu_head">贷款申请</p>
+    <div style="display:none" class=menu_body >
+      <a href="#">快速通道</a>
+    </div>
+
+</div>
+</div>
+
+<div class="ucRight">
+
+<p>哈哈哈</p>
+
+</div>
