@@ -1,0 +1,10 @@
+*{ padding: 0; margin: 0; }
+body { background: #fff; font-family: '微软雅黑'; color: #333; font-size: 16px; }
+.system-message{ width:500px;height:100px; margin:auto;border:2px solid #A7C5F1;text-align:center; position:relative;top:50px;}
+.system-message legend{font-size:14px;font-weight:bold;color:#999;margin:auto;width:100px;}
+.system-message h1{ font-size: 100px; font-weight: normal; line-height: 120px; margin-bottom: 12px; }
+.system-message .jump{ padding-right:10px;height:25px;line-height:25px;font-size:14px;position:absolute;bottom:0px;left:0px;background-
+color:#e6e6e1 ; display:block;width:490px;text-align:right;}
+.system-message .jump a{ color: #333;}
+.system-message .success,.system-message .error{ line-height: 1.8em; font-size: 15px }
+.system-message .detail{ font-size: 12px; line-height: 20px; margin-top: 12px; display:none}

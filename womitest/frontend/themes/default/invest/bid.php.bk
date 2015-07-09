@@ -1,0 +1,95 @@
+<?php
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+use yii\web\Session;
+use common\includes\CommonUtility;
+use common\models\User;
+
+$this->title = 'LoanChannel';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="loan-bg">
+     <p>请输入您的贷款信息：</p>
+        <div class="loan-outer">
+                 <?php $form = ActiveForm::begin(['id' => 'form-loan',
+                                                  'fieldConfig' => [
+                                                                    'template'=>"{input}\n{error}",
+                                                                   ],
+				]);
+		 //借款人信息/如有必要
+		 $name=Yii::$app->user->identity->username;
+		 $who= User::findByUsername($name);
+		 //$invest->biduser=$who->username;
+		 $invest->phone=$who->phone;
+		 
+		 $invest->loan_rate=$loan->loan_rate;
+		 $invest->loanid=$loan->loanid;
+		 $invest->wmstat=0;
+		 ?>
+
+
+
+			 <?//= $form->field($invest,'biduser')->hiddenInput(['style'=>'width:240px']);?>
+			 <?//= $form->field($invest,'phone')->hiddenInput(['style'=>'width:240px']);?>
+			 <?//= $form->field($invest,'loan_rate')->hiddenInput(['style'=>'width:240px']);?>
+			 <?//= $form->field($invest,'loanid')->hiddenInput(['style'=>'width:240px']);?>
+			 <?//= $form->field($invest,'wmstat')->hiddenInput(['style'=>'width:240px']);?>
+                           <div class="loan">
+                                   <div class="loan-hide" id="loan-type"><input  id="testalert"></input></div>
+				   <div class="loanr">
+			 	   <?= $form->field($loan,'loan_type')->textInput(['readonly' => true,'style'=>'width:240px']);?>
+				   </div>
+                                   <div class="loanl">发起人姓名</div>
+                           </div>
+                           <div class="loan">
+                                   <div class="loan-hide" id="loan-name"><input  id="testalert"></input></div>
+                                   <div class="loanr">
+					<?= $form->field($loan, 'realname')->textInput(['readonly' => true,'style'=>'width:240px']);?>
+				   </div>
+                                   <div class="loanl">真实姓名</div>
+                           </div>
+                          <div class="loan">
+                                   <div class="loan-hide" id="loan-amount"><input  id="testalert"></input></div>
+                                   <div class="loanr" id="loan-amount"><?= $form->field($loan, 'bid_amount')->textInput(['readonly' => true,'style'=>'width:240p
+x']);?></div>
+                                   <div class="loanl">已投金额</div>
+                          </div>
+                          <div class="loan">
+                                   <div class="loan-hide" id="loan-amount"><input  id="testalert"></input></div>
+                                   <div class="loanr" id="loan-amount"><?= $form->field($loan, 'amount')->textInput(['readonly' => true,'style'=>'width:240p
+x']);?></div>
+                                   <div class="loanl">总贷金额</div>
+                          </div> 
+
+ 
+			  <div class="loan">
+                                   <div class="loan-hide" id="loan-amount"><input  id="testalert"></input></div>
+                                   <div class="loanr" id="loan-amount"><?= $form->field($loan, 'bid_num')->textInput(['readonly' => true,'style'=>'width:240px']);?></div>
+                                   <div class="loanl">已投笔数</div>
+                          </div>   
+                          <div class="loan">
+                                   <div class="loan-hide" id="loan-amount"><input  id="testalert"></input></div>
+                                   <div class="loanr" id="loan-rate"><?= $form->field($loan, 'loan_rate')->textInput(['readonly' => true,'style'=>'width:240px']);?></div>
+                                   <div class="loanl">提供年化利率</div>
+                          </div>
+			  <div class="loan">
+                                   <div class="loan-hide" id="loan-amount"><input  id="testalert"></input></div>
+                                   <div class="loanr" id="loan-rate"><?= $form->field($loan, 'desc')->textArea(['readonly' => true,'style'=>'width:240px']);?></div>
+                                   <div class="loanl">贷款者申述</div>
+                          </div>
+			 <div class="loan">
+                                   <div class="loan-hide" id="loan-amount"><input  id="testalert"></input></div>
+                                   <div class="loanr" id="loan-rate"><?= $form->field($invest,'amount')->textArea(['readonly' => true,'style'=>'width:240px']);?></div>
+                                   <div class="loanl">投标金额</div>
+                          </div>
+
+
+			                            <div class="loan">
+                                   <div class="loan-hide" id="loan-btn"><input  id="testalert"></input></div>
+                                   <div class="loanr">
+                                   <?= Html::submitButton('确认投标', ['class' => 'sbtn btn btn-primary']) ?>
+                                   </div>
+                           </div>
+                  <?php ActiveForm::end(); ?>
+        </div>
+</div>

@@ -1,0 +1,24 @@
+.inp{float:left;width:180px;}
+.fl{float:left;};
+.cls {clear:both;}
+.myradio {margin-left:20px;float:left;}
+/*#wizard {border:5px solid #789;font-size:12px;height:400px;margin:20px auto;width:800px;overflow:hidden;position:relative;-moz-border-radius:5px;-webkit-border-radius:5px;}*/
+#wizard {font-size:14px;height:1000px;margin:30px 150px 40px 150px;overflow:hidden;position:relative;-moz-border-radius:5px;-webkit-border-radius:5px;}
+#wizard .right{float:right;}
+#wizard .items{width:20000px; clear:both; position:absolute;}
+#wizard .right{float:right;}
+#wizard #status{height:50px;background:#A7C5F1;padding-left: 150px;}
+/*#status li{float:left;color:#fff;padding:0px 40px;}*/
+#status li{float:left;color:#fff;padding:14px 50px;font:16px "微软雅黑",Arial,Times;/*font-weight: bold;*/}
+#status li.active{background:#428BCA;font-weight:bold;}
+
+.myfield {margin-left:30px;width:180px;float:left;}
+/*.page{padding:20px 30px;width:500px;float:left;}*/
+.page{padding:20px 30px;/*margin:30px 150px 40px 150px;*/width:964px;float:left;}
+.page h3{font-weight: bold;height:30px; font-size:15px; border-bottom:1px dotted #ccc;text-align: left;margin-bottom:8px; padding-bottom:5px}
+.page h3 em{color:#cccccc;font-size:12px; font-weight:500; font-style:normal}
+/*.page p{line-height:24px;}*/
+.page p label{margin:0px 10px;font:15px "微软雅黑",Arial,Times;color:#000000; display:block;width:150px;float:left;height:30px;}
+.input{width:200px; height:30px; margin:5px auto; line-height:20px; border:1px solid #d3d3d3; padding:2px;float:left;}
+.btn_nav{height:36px; line-height:36px; margin:20px auto;}
+.prev,.next{width:100px; height:32px; line-height:32px; background-color:#388cef;/*background:url(btn_bg.gif) repeat-x bottom;*/ border:1px solid #d3d3d3; cursor:pointer}

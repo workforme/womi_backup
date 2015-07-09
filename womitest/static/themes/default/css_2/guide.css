@@ -1,0 +1,30 @@
+/* 
+ * border is mainly for debuging
+ *
+ */
+
+.gdnavUp{/*position:absolute;*/margin:10px 0px 0px;/*border: 1px solid green;*/}
+.gdnavUpInner{position:relative;margin:10px 120px;/*border:1px solid red;*/}
+.gdnav {width:60%;left:10%; position:relative;bottom: -2px;/*border:1px solid red;*/}
+.gdnav ul li {float:left;width:120px;padding:0 20px;text-align:center;height:40px;line-height:40px;/*border:4px solid blue;*/}
+.gdnav ul li a{font: 16.5px "幼圆",Arial,Times;color: #666699;}
+.gdline {background:#80A9E6;height:4px;position:absolute;bottom:-1px;width:100%;left:0px;right:0px;}
+.gdcur { background:#F2F2FB;height:4px;position:absolute;bottom:0;width:70px;left:0px;z-index:999999;}
+
+#loan_img {url(../images_2/guideloan.jpg);}
+
+.gdnavDown{margin:10px 120px;/*border: 1px solid blue;*/}
+.gdcls{clear:both;}
+.guide_bg{margin-bottom:50px;top:20px;position:relative;background:#F7F7F8;}
+.guide_right{width:40%;float:left;/*border: 1px solid red;*/}
+.guide_left{width:60%;float:left;/*border :1px solid red;*/}
+.guide_left_word{margin:20px 40px;}
+.guide_left p{text-align:left;text-indent:2em;font:15px "微软雅黑",Arial,Times;color:#383838;}
+.guide_left h2{text-align:left;font:15px "黑体",Arial,Times;color:#3300cc;}
+.guide_flow{background:#FFFFFF;width:100%;float:left;/*border :1px solid red;*/}
+
+.guide_hd{background:#a7c5f1;width:100%;float:left;/*border: 1px solid red;*/padding-bottom:10px;padding-top:10px;}
+.guide_hd_left h1{font:bold 17px "微软雅黑",Arial,Times;color:#444444;}
+.guide_hd_left{margin-left:40px;margin-top: 5px;margin-bottom: auto;float:left;/*border: 1px solid red;*/}
+.guide_hd_right{margin-right:40px;float:right;/*border: 1px solid red;*/}
+
